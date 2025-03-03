@@ -1,0 +1,33 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: my-first-vm
+spec:
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: my-first-vm
+    spec:
+      domain:
+        devices:
+          disks:
+            - name: containerdisk
+              disk:
+                bus: virtio
+            - name: cloudinitdisk
+              disk:
+                bus: virtio
+        resources:
+          requests:
+            memory: 512M
+      volumes:
+        - name: containerdisk
+          containerDisk:
+            image: kubevirt/fedora-cloud-container-disk-demo:latest
+        - name: cloudinitdisk
+          cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              password: fedora
+              chpasswd: { expire: False }
