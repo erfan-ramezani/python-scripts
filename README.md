@@ -14,3 +14,9 @@ Extracting hostnames, IP, etc. based on tags in Zabbix
 You must give it the Zabbix URL and token at the entrance
 
 
+
+
+### KubeVirt Configuration Explained
+This configuration file creates a simple Virtual Machine (VM) using KubeVirt, a powerful tool that allows you to manage VMs directly within Kubernetes.
+
+
